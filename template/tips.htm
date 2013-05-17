@@ -1,0 +1,64 @@
+<!--{block return}-->
+<script type="text/javascript" src="source/plugin/gww_tips/template/jquery.min.js"></script>
+<div id="gww_tips" style="position: {$loc_position} ;_position:absolute; float:right; right:{$loc_r}px; top:{$loc_t}px; display:{$display};width:{$tips_width}px;">
+	<div class="gww_tips" style="background-color:{$tips_bg}">
+		<a class="tipsdel" href="javascript:void(0)" onclick="$('#gww_tips').hide();">close</a>
+		<!--{if $newpm}-->
+		<p id="tips-newpm">{lang gww_tips:new_pm}, <a href="home.php?mod=space&do=pm">{lang gww_tips:view_pm}</a></p>
+		<!--{/if}--> 
+      	<!--{if $newprompt}-->
+		<p id="tips-newprompt">{lang gww_tips:have} <b id="tips-newprompt-count">{$newprompt}</b> {lang gww_tips:new_notice}, <a href="home.php?mod=space&do=notice">{lang gww_tips:view_notice}</a></p>
+		<!--{/if}-->
+	</div>
+</div>
+<!--{if $poll_on}-->
+<script type="text/javascript">
+	jQuery.noConflict();
+
+	var time = {$poll_mintime};  //默认从最小时间开始			
+	var url = 'plugin.php?id=gww_tips:count&t=' + new Date().getTime();
+			
+	var pullData = function(){
+	
+		setTimeout(function(){
+					
+			jQuery.get(url, function(data){
+				time = time >= {$poll_maxtime} ? {$poll_maxtime} : time + {$poll_decay};  //如果比最大时间还大，那就最大时间，否则衰减
+				if (data) {
+					if(data.newpm && data.newpm > 0 && jQuery('#tips-newpm').length == 0){
+						jQuery('.gww_tips').append('<p id="tips-newpm">{lang gww_tips:new_pm}, <a href="home.php?mod=space&do=pm">{lang gww_tips:view_pm}</a></p>');
+						jQuery('#gww_tips').show();
+						time = {$poll_mintime};//恢复最小时间的轮询
+					}
+					
+					if(data.newprompt && data.newprompt > 0){
+						if(jQuery('#tips-newprompt').length == 0){
+							jQuery('.gww_tips').append('<p id="tips-newprompt">{lang gww_tips:have} <b id="tips-newprompt-count">'+ data.newprompt +'</b> {lang gww_tips:new_notice}, <a href="home.php?mod=space&do=notice">{lang gww_tips:view_notice}</a></p>');
+						}else if(jQuery('#tips-newprompt-count').length > 0){
+							jQuery('#tips-newprompt-count').html(data.newprompt);
+						}
+						jQuery('#gww_tips').show();
+						time = {$poll_mintime};//恢复最小时间的轮询
+					}
+					
+					if(!data.newpm || data.newpm == 0){
+						jQuery('.gww_tips #tips-newpm').hide();
+					}
+					if(!data.newprompt || data.newprompt == 0){
+						jQuery('.gww_tips #tips-newprompt').hide();
+					}
+					if(data.newpm == 0 && data.newprompt == 0){
+						jQuery('#gww_tips').hide();
+					}
+					
+					pullData();
+				}	
+			},'jsonp');
+				
+		}, time);
+	}
+ 
+	pullData();
+</script>
+<!--{/if}-->
+<!--{/block}-->

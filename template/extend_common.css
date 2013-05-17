@@ -1,0 +1,40 @@
+#gww_tips {
+    z-index: 999;
+}
+.gww_tips {
+    background: none repeat scroll 0 0 #FFFFE3;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    line-height: 20px;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+.gww_tips a.tipsdel:hover {
+    background-position: 0 0;
+}
+.gww_tips p {
+    margin-top:5px;
+	margin-right: 20px;
+	text-align:left !important;
+}
+.gww_tips a{
+	color: #336699 !important;
+}
+.gww_tips a.tipsdel {
+    background-position: -16px 0;
+    border: 0 none;
+    height: 12px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    float: right;
+    overflow: hidden;
+    text-indent: -2000em;
+}
+.gww_tips .tipsdel {
+	background: url("../../source/plugin/gww_tips/template/close.png") no-repeat scroll 0 0 transparent
+}
