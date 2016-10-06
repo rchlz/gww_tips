@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -22,25 +22,25 @@ if(!submitcheck('submit')) {
 	showtablerow('', array('class="td25"', 'class="td25"'), array(
 				lang('plugin/gww_tips', 'poll_on'),
 				'<input type="checkbox" name="poll_on" value="1" '.$poll_on.' />',
-				'—π¡¶¥ÛæÕπÿ¡À'
+				'ÂéãÂäõÂ§ßÂ∞±ÂÖ≥‰∫Ü'
 	));
 	
 	showtablerow('', array('class="td25"', 'class="td25"'), array(
 				lang('plugin/gww_tips', 'poll_maxtime'),
 				'<input type="text" name="poll_maxtime" value="'.$poll_maxtime.'" />',
-				' µ•Œª:√Î(s)'
+				' Âçï‰Ωç:Áßí(s)'
 	));
 	
 	showtablerow('', array('class="td25"', 'class="td25"'), array(
 				lang('plugin/gww_tips', 'poll_mintime'),
 				'<input type="text" name="poll_mintime" value="'.$poll_mintime.'" />',
-				' µ•Œª:√Î(s)'
+				' Âçï‰Ωç:Áßí(s)'
 	));
 	
 	showtablerow('', array('class="td25"', 'class="td25"'), array(
 				lang('plugin/gww_tips', 'poll_decay'),
 				'<input type="text" name="poll_decay" value="'.$poll_decay.'" />',
-				' µ•Œª:√Î(s)'
+				' Âçï‰Ωç:Áßí(s)'
 	));
 	
 	showsubmit('submit','submit', '', '', '');
@@ -72,7 +72,7 @@ if(!submitcheck('submit')) {
 	/*
 	DB::query("UPDATE ".DB::table('gwwtips_setting')." SET poll_on='$poll_on',poll_maxtime='$poll_maxtime',poll_mintime='$poll_mintime',poll_decay='$poll_decay' WHERE sid=1");
 
-	loadcache('plugin'); //∂¡»°≤Âº˛ª∫¥Ê
+	loadcache('plugin'); //ËØªÂèñÊèí‰ª∂ÁºìÂ≠ò
 	*/
 	
 	cpmsg('OK', 'action=plugins&operation=config&identifier=gww_tips&pmod=setting');

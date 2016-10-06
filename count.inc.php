@@ -1,8 +1,8 @@
-<?php
+ï»¿<?php
 
 
 /**
- *	[ÆøÅÝÌáÐÑ(gww_tips.feed)] (C)2013-2015 Powered by gww QQ:270144592.
+ *	[æ°”æ³¡æé†’(gww_tips.feed)] (C)2013-2015 Powered by gww QQ:270144592.
  *	Version: 1.0
  *	Date: 2013-5-15 11:42
  */

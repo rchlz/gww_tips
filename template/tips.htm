@@ -1,4 +1,4 @@
-<!--{block return}-->
+ï»¿<!--{block return}-->
 <script type="text/javascript" src="source/plugin/gww_tips/template/jquery.min.js"></script>
 <div id="gww_tips" style="position: {$loc_position} ;_position:absolute; float:right; right:{$loc_r}px; top:{$loc_t}px; display:{$display};width:{$tips_width}px;">
 	<div class="gww_tips" style="background-color:{$tips_bg}">
@@ -15,7 +15,7 @@
 <script type="text/javascript">
 	jQuery.noConflict();
 
-	var time = {$poll_mintime};  //Ä¬ÈÏ´Ó×îĞ¡Ê±¼ä¿ªÊ¼			
+	var time = {$poll_mintime};  //é»˜è®¤ä»æœ€å°æ—¶é—´å¼€å§‹			
 	var url = 'plugin.php?id=gww_tips:count&t=' + new Date().getTime();
 			
 	var pullData = function(){
@@ -23,12 +23,12 @@
 		setTimeout(function(){
 					
 			jQuery.get(url, function(data){
-				time = time >= {$poll_maxtime} ? {$poll_maxtime} : time + {$poll_decay};  //Èç¹û±È×î´óÊ±¼ä»¹´ó£¬ÄÇ¾Í×î´óÊ±¼ä£¬·ñÔòË¥¼õ
+				time = time >= {$poll_maxtime} ? {$poll_maxtime} : time + {$poll_decay};  //å¦‚æœæ¯”æœ€å¤§æ—¶é—´è¿˜å¤§ï¼Œé‚£å°±æœ€å¤§æ—¶é—´ï¼Œå¦åˆ™è¡°å‡
 				if (data) {
 					if(data.newpm && data.newpm > 0 && jQuery('#tips-newpm').length == 0){
 						jQuery('.gww_tips').append('<p id="tips-newpm">{lang gww_tips:new_pm}, <a href="home.php?mod=space&do=pm">{lang gww_tips:view_pm}</a></p>');
 						jQuery('#gww_tips').show();
-						time = {$poll_mintime};//»Ö¸´×îĞ¡Ê±¼äµÄÂÖÑ¯
+						time = {$poll_mintime};//æ¢å¤æœ€å°æ—¶é—´çš„è½®è¯¢
 					}
 					
 					if(data.newprompt && data.newprompt > 0){
@@ -38,7 +38,7 @@
 							jQuery('#tips-newprompt-count').html(data.newprompt);
 						}
 						jQuery('#gww_tips').show();
-						time = {$poll_mintime};//»Ö¸´×îĞ¡Ê±¼äµÄÂÖÑ¯
+						time = {$poll_mintime};//æ¢å¤æœ€å°æ—¶é—´çš„è½®è¯¢
 					}
 					
 					if(!data.newpm || data.newpm == 0){
